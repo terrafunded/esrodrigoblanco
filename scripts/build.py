@@ -89,6 +89,7 @@ T = {
    ("It's not acres. It's where a family builds.", "This fall I watched a buyer raising his house with his own hands on land he bought from us. That's what this business is for."),
   ],
   "tech_links": [("TerraFunded GPS", f"{TF}/gps"), ("TerraFunded Overview", "https://overview.terrafunded.com")],
+  "adn_k": "DNA", "adn_h": "What drives everything I build", "adn": ["God", "Purpose", "Entrepreneurship"],
   "land_k": "Land", "land_h": "Where TerraFunded buyers build",
   "writing_k": "Writing", "writing_h": "Guides I've written for land buyers", "writing_all": "All articles on the TerraFunded blog",
   "press_k": "Press", "press_h": "Press and mentions", "press_type": {"article": "Article", "release": "Press release"},
@@ -139,6 +140,7 @@ T = {
    ("No son acres. Es donde una familia construye.", "Este otoño vi a un comprador levantando su casa con sus propias manos en un terreno que nos compró. Para eso existe este negocio."),
   ],
   "tech_links": [("TerraFunded GPS", f"{TF}/es/gps"), ("TerraFunded Overview", "https://overview.terrafunded.com")],
+  "adn_k": "ADN", "adn_h": "Lo que mueve todo lo que construyo", "adn": ["Dios", "Propósito", "Emprendimiento"],
   "land_k": "Tierra", "land_h": "Donde construyen los compradores de TerraFunded",
   "writing_k": "Artículos", "writing_h": "Guías que he escrito para compradores de tierra (en inglés)", "writing_all": "Todos los artículos en el blog de TerraFunded",
   "press_k": "Prensa", "press_h": "Prensa y menciones", "press_type": {"article": "Artículo", "release": "Comunicado"},
@@ -178,7 +180,7 @@ def jsonld(t):
         "sameAs": [TF_PERSON, LINKEDIN, INSTAGRAM],
     }
     graph = [
-        {"@type": "WebSite", "@id": f"{SITE}/#website", "url": f"{SITE}/", "name": "Rodrigo Blanco", "inLanguage": ["en", "es"], "about": {"@id": pid}},
+        {"@type": "WebSite", "@id": f"{SITE}/#website", "url": f"{SITE}/", "name": "Rodrigo Blanco", "alternateName": "Rodrigo BlanCo.", "inLanguage": ["en", "es"], "about": {"@id": pid}},
         {"@type": "ProfilePage", "@id": f"{page}#profilepage", "url": page, "name": t["title"], "description": t["desc"], "inLanguage": t["lang"],
          "isPartOf": {"@id": f"{SITE}/#website"}, "mainEntity": {"@id": pid}, "dateModified": MODIFIED},
         person,
@@ -213,6 +215,7 @@ def page(code):
     land = "".join(f'<figure class="rv {cls}"><img src="/land/{f}.webp" width="{w}" height="{h}" loading="lazy" decoding="async" alt="{e(t["land_h"])}: {e(cap_es if code=="es" else cap_en)}, Texas"><figcaption>{e(cap_es if code=="es" else cap_en)}, Texas</figcaption></figure>' for f, w, h, cap_en, cap_es, cls in LAND)
     arts = "".join(f'<li><a href="{u}" rel="author noopener"><span class=tag>{e(g[ci])}</span><span class=t>{e(ti)}</span><span class=arr>→</span></a></li>' for ti, u, g in ARTICLES)
     press = "".join(f'<li><a href="{u}" rel="noopener"><span class=tag>{e(d[code])}</span><span class=t>{e(ti)}<small>{e(out)} · {e(t["press_type"][ty])}</small></span><span class=arr>↗</span></a></li>' for out, d, ti, u, ty in PRESS)
+    adn = '<span class="plus" aria-hidden="true">+</span>'.join(f'<div class="dmd rv"><span>{e(x)}</span></div>' for x in t["adn"])
     faq = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in t["faq"])
     blog = f"{TF}/es/blog" if code == "es" else f"{TF}/blog"
     tf_home = f"{TF}/es" if code == "es" else TF
@@ -248,7 +251,7 @@ def page(code):
 <meta property="og:locale" content="{t['locale']}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/fonts/montserrat-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/urbanist-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>{CSS}</style>
 <script type="application/ld+json">
 {jsonld(t)}
@@ -256,14 +259,14 @@ def page(code):
 </head>
 <body>
 <header class="nav"><div class="wrap">
- <a class="brand" href="{t['path']}"><i></i>Rodrigo Blanco</a>
+ <a class="brand" href="{t['path']}" aria-label="Rodrigo Blanco"><img src="/brand/logo-dark.svg" width="190" height="25" alt="Rodrigo BlanCo."></a>
  <nav aria-label="Main">{nav}<a class="lang" href="{t['other']}" hreflang="{o['lang']}" lang="{o['lang']}">{e(t['other_label'])}</a></nav>
 </div></header>
 <main>
-<section class="hero"><div class="wrap">
+<section class="hero"><span class="wm" aria-hidden="true">Blan<br>Co.</span><div class="wrap">
  <div class="hero-txt">
   <p class="eyebrow">{e(t['eyebrow'])}</p>
-  <h1>Rodrigo<br>Blanco</h1>
+  <h1>Rodrigo<br>Blanco<em>.</em></h1>
   <p class="lede">{e(t['lede'])}</p>
   <div class="ctas"><a class="btn primary" href="{tf_home}" rel="noopener">{e(t['cta1'])} →</a><a class="btn" href="{INSTAGRAM}" rel="me noopener">{e(t['cta2'])}</a></div>
  </div>
@@ -290,6 +293,11 @@ def page(code):
  <div class="head">{k(2, t['vision_k'])}<h2>{e(t['vision_h'])}</h2></div>
  <ol class="vision">{vision}</ol>
  <p class="techl">{techl}</p>
+</div></section>
+
+<section class="adn" aria-label="{e(t['adn_k'])}"><div class="wrap">
+ <p class="k">{e(t['adn_k'])}</p><h2>{e(t['adn_h'])}</h2>
+ <div class="dmds">{adn}</div>
 </div></section>
 
 <section class="block" id="land"><div class="wrap">
@@ -324,6 +332,7 @@ def page(code):
 </div></div>
 </main>
 <footer><div class="wrap">
+ <img class="fsym" src="/brand/symbol-dark.svg" width="44" height="36" alt="">
  <span>© 2026 Rodrigo Blanco · {e(t['footer'])}</span>
  <span><a href="{tf_home}" rel="noopener">terrafunded.com</a> · <a href="{TF_PERSON}" rel="me noopener">{e(t['tf_profile'])}</a></span>
 </div></footer>
@@ -338,7 +347,9 @@ def main():
     (OUT / "es").mkdir(exist_ok=True)
     (OUT / "index.html").write_text(page("en"), encoding="utf-8")
     (OUT / "es" / "index.html").write_text(page("es"), encoding="utf-8")
-    (OUT / "favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#00251A"/><text x="32" y="43" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="800" font-size="28" fill="#fff">RB</text><circle cx="50" cy="16" r="5" fill="#00D582"/></svg>', encoding="utf-8")
+    sym = (OUT / "brand" / "symbol-white.svg").read_text(encoding="utf-8")
+    inner = sym[sym.index(">", sym.index("<svg")) + 1:sym.rindex("</svg>")]
+    (OUT / "favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#19262C"/><svg x="8" y="12" width="48" height="40" viewBox="866 467.5 179 144.8">' + inner + '</svg></svg>', encoding="utf-8")
     (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
     alt = f'<xhtml:link rel="alternate" hreflang="en" href="{SITE}/"/><xhtml:link rel="alternate" hreflang="es" href="{SITE}/es/"/>'
     (OUT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n<url><loc>{SITE}/</loc><lastmod>{MODIFIED}</lastmod>{alt}</url>\n<url><loc>{SITE}/es/</loc><lastmod>{MODIFIED}</lastmod>{alt}</url>\n</urlset>\n', encoding="utf-8")
