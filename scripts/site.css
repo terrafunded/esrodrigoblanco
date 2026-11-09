@@ -143,6 +143,21 @@ dl.facts dd{font-weight:700;font-size:16px}
 .rows .arr{color:var(--red);font-weight:800;transition:transform .15s}
 .more{display:inline-block;margin:22px 0 0 280px;font-weight:700;font-size:16px}
 
+/* press kit */
+.kit{margin:48px 0 0 280px;background:var(--tint);border-radius:20px;padding:34px}
+.kit-head h3{font-size:24px;font-weight:800;letter-spacing:-.02em}
+.kit-head p{color:var(--soft);margin-top:4px}
+.bios{display:grid;grid-template-columns:1fr 1.4fr;gap:16px;margin-top:22px}
+.bio{background:#fff;border-radius:14px;padding:20px 22px}
+.bio-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.bio-top b{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.bio button{font:inherit;font-size:14px;font-weight:700;border:1.5px solid var(--ink);background:#fff;color:var(--ink);border-radius:999px;padding:4px 14px;cursor:pointer}
+.bio button:hover{background:var(--ink);color:#fff}
+.bio p{font-size:16px;line-height:1.55}
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.dl a{font-size:15px;font-weight:700;text-decoration:none;background:var(--ink);color:#fff;border-radius:10px;padding:10px 16px}
+.dl a:hover{background:var(--red)}
+
 /* faq */
 .faq{margin-left:280px}
 details{border-bottom:1px solid var(--line)}
@@ -173,7 +188,8 @@ footer a{color:var(--soft)}
  .story{grid-template-columns:1fr}
  .story>div,.story .facts{grid-column:auto}
  dl.facts{position:static}
- .rows,.faq{margin-left:0}
+ .rows,.faq,.kit{margin-left:0}
+ .bios{grid-template-columns:1fr}
  .more,.techl{margin-left:0}
  .vision li{grid-template-columns:90px 1fr;gap:20px}
  .vn{font-size:44px}

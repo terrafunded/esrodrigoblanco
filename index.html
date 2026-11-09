@@ -25,9 +25,18 @@
 <meta property="og:image" content="https://esrodrigoblanco.com/og-rodrigo-blanco.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Rodrigo Blanco, Founder &amp; CEO, TerraFunded">
 <meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rodrigo Blanco | Founder &amp; CEO of TerraFunded">
+<meta name="twitter:description" content="Rodrigo Blanco is the founder and CEO of TerraFunded, a Dallas company that sells rural Texas land directly to buyers with owner financing. 350+ land transactions and $15M+ in sales.">
+<meta name="twitter:image" content="https://esrodrigoblanco.com/og-rodrigo-blanco.jpg">
+<meta name="msvalidate.01" content="620472A22B0CA1581D997D4E8FBC1A9F">
+<meta name="google-site-verification" content="-E_RcX_S4mlRN3WIIyLujaK6M_BnNBOgAqA6BPch5Zo">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/urbanist-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>/* Rodrigo BlanCo. personal brand (Wonder Studio manual):
    slate #19262C, red #ED1C24, light gray #C9C9C9, white.
@@ -174,6 +183,21 @@ dl.facts dd{font-weight:700;font-size:16px}
 .rows .arr{color:var(--red);font-weight:800;transition:transform .15s}
 .more{display:inline-block;margin:22px 0 0 280px;font-weight:700;font-size:16px}
 
+/* press kit */
+.kit{margin:48px 0 0 280px;background:var(--tint);border-radius:20px;padding:34px}
+.kit-head h3{font-size:24px;font-weight:800;letter-spacing:-.02em}
+.kit-head p{color:var(--soft);margin-top:4px}
+.bios{display:grid;grid-template-columns:1fr 1.4fr;gap:16px;margin-top:22px}
+.bio{background:#fff;border-radius:14px;padding:20px 22px}
+.bio-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.bio-top b{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.bio button{font:inherit;font-size:14px;font-weight:700;border:1.5px solid var(--ink);background:#fff;color:var(--ink);border-radius:999px;padding:4px 14px;cursor:pointer}
+.bio button:hover{background:var(--ink);color:#fff}
+.bio p{font-size:16px;line-height:1.55}
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.dl a{font-size:15px;font-weight:700;text-decoration:none;background:var(--ink);color:#fff;border-radius:10px;padding:10px 16px}
+.dl a:hover{background:var(--red)}
+
 /* faq */
 .faq{margin-left:280px}
 details{border-bottom:1px solid var(--line)}
@@ -204,7 +228,8 @@ footer a{color:var(--soft)}
  .story{grid-template-columns:1fr}
  .story>div,.story .facts{grid-column:auto}
  dl.facts{position:static}
- .rows,.faq{margin-left:0}
+ .rows,.faq,.kit{margin-left:0}
+ .bios{grid-template-columns:1fr}
  .more,.techl{margin-left:0}
  .vision li{grid-template-columns:90px 1fr;gap:20px}
  .vn{font-size:44px}
@@ -323,10 +348,70 @@ footer a{color:var(--soft)}
     "en",
     "es"
    ],
+   "nationality": {
+    "@type": "Country",
+    "name": "Guatemala"
+   },
+   "subjectOf": [
+    {
+     "@type": "NewsArticle",
+     "headline": "TerraFunded eclipses $15 million in cumulative land sales",
+     "url": "https://www.thetitlereport.com/TTR/Articles/97176.aspx",
+     "publisher": {
+      "@type": "Organization",
+      "name": "The Title Report"
+     }
+    },
+    {
+     "@type": "Article",
+     "headline": "Rodrigo Blanco's TerraFunded Launches Bilingual Land Buyer Education Platform",
+     "url": "https://xpr.media/?p=788051",
+     "publisher": {
+      "@type": "Organization",
+      "name": "XPR Media"
+     }
+    },
+    {
+     "@type": "Article",
+     "headline": "TerraFunded Surpasses $15M in Texas Land Sales, Serving 350+ U.S. Families",
+     "url": "https://natlawreview.com/press-releases/terrafunded-surpasses-15m-texas-land-sales-serving-350-us-families",
+     "publisher": {
+      "@type": "Organization",
+      "name": "National Law Review"
+     }
+    },
+    {
+     "@type": "Article",
+     "headline": "TerraFunded Surpasses $15M in Texas Land Sales, Serving 350+ U.S. Families",
+     "url": "https://weeklyvoice.com/terrafunded-surpasses-15m-in-texas-land-sales-serving-350-u-s-families/",
+     "publisher": {
+      "@type": "Organization",
+      "name": "The Weekly Voice"
+     }
+    }
+   ],
    "sameAs": [
     "https://terrafunded.com/authors/rodrigo-blanco",
     "https://www.linkedin.com/in/rodrigoblancomarroquin/",
     "https://www.instagram.com/esrodrigoblanco/"
+   ]
+  },
+  {
+   "@type": "Organization",
+   "@id": "https://terrafunded.com/#organization",
+   "name": "TerraFunded",
+   "legalName": "TerraFunded, LLC",
+   "url": "https://terrafunded.com",
+   "foundingDate": "2020",
+   "founder": [
+    {
+     "@id": "https://esrodrigoblanco.com/#person"
+    },
+    {
+     "@type": "Person",
+     "@id": "https://terrafunded.com/about-us/luisa-de-blanco#person",
+     "name": "Luisa de Blanco"
+    }
    ]
   },
   {
@@ -444,6 +529,14 @@ footer a{color:var(--soft)}
 <section class="block" id="press"><div class="wrap">
  <div class="head"><p class="k"><em>05</em>Press</p><h2>Press and mentions</h2></div>
  <ul class="rows"><li><a href="https://www.thetitlereport.com/TTR/Articles/97176.aspx" rel="noopener"><span class=tag>Apr 30, 2026</span><span class=t>TerraFunded eclipses $15 million in cumulative land sales<small>The Title Report · Article</small></span><span class=arr>↗</span></a></li><li><a href="https://xpr.media/?p=788051" rel="noopener"><span class=tag>May 8, 2026</span><span class=t>Rodrigo Blanco&#x27;s TerraFunded Launches Bilingual Land Buyer Education Platform<small>XPR Media · Press release</small></span><span class=arr>↗</span></a></li><li><a href="https://natlawreview.com/press-releases/terrafunded-surpasses-15m-texas-land-sales-serving-350-us-families" rel="noopener"><span class=tag>Apr 2026</span><span class=t>TerraFunded Surpasses $15M in Texas Land Sales, Serving 350+ U.S. Families<small>National Law Review · Press release</small></span><span class=arr>↗</span></a></li><li><a href="https://weeklyvoice.com/terrafunded-surpasses-15m-in-texas-land-sales-serving-350-u-s-families/" rel="noopener"><span class=tag>Apr 2026</span><span class=t>TerraFunded Surpasses $15M in Texas Land Sales, Serving 350+ U.S. Families<small>The Weekly Voice · Press release</small></span><span class=arr>↗</span></a></li></ul>
+ <div class="kit" id="press-kit">
+  <div class="kit-head"><h3>Press kit</h3><p>Bios and photos ready to use in articles, podcasts and event programs.</p></div>
+  <div class="bios">
+   <div class="bio"><div class="bio-top"><b>Short bio</b><button type="button" data-copy="bs" data-done="Copied">Copy</button></div><p id="bs">Rodrigo Blanco is the founder and CEO of TerraFunded, a Dallas-based company that sells rural Texas land directly to buyers with owner financing. TerraFunded has closed more than 350 land transactions and passed $15 million in cumulative sales.</p></div>
+   <div class="bio"><div class="bio-top"><b>Long bio</b><button type="button" data-copy="bl" data-done="Copied">Copy</button></div><p id="bl">Rodrigo Blanco is the founder and CEO of TerraFunded, a Dallas-based company that sells rural Texas land directly to buyers with owner financing and a Warranty Deed at closing. Born in Guatemala, he has been developing the seller-financing land model since 2019 and founded TerraFunded in 2020 with his wife and co-founder, Luisa de Blanco. Under his leadership, TerraFunded has closed more than 350 land transactions and passed $15 million in cumulative sales, mostly parcels of about 10 acres across Texas counties such as Lamar, Young, Titus, Cass, Clay and Coryell. About 40% of TerraFunded&#x27;s buyers are Hispanic or Latino. Rodrigo leads a bilingual team that builds the company&#x27;s own technology with AI, including TerraFunded GPS, which shows buyers their lot lines through a phone camera. He speaks English and Spanish. More at esrodrigoblanco.com.</p></div>
+  </div>
+  <div class="dl"><a href="/rodrigo-blanco.jpg" download>Headshot (JPG) ↓</a><a href="/brand/logo-dark.svg" download>Logo (SVG) ↓</a><a href="/brand/logo-white.svg" download>Logo, white (SVG) ↓</a></div>
+ </div>
 </div></section>
 
 <section class="block" id="faq"><div class="wrap">
@@ -468,6 +561,11 @@ footer a{color:var(--soft)}
  <span><a href="https://terrafunded.com" rel="noopener">terrafunded.com</a> · <a href="https://terrafunded.com/authors/rodrigo-blanco" rel="me noopener">TerraFunded profile</a></span>
 </div></footer>
 <script>
+document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+ var t=document.getElementById(b.dataset.copy).textContent,l=b.textContent;
+ var done=function(){b.textContent=b.dataset.done;setTimeout(function(){b.textContent=l},1600)};
+ try{navigator.clipboard.writeText(t).then(done,function(){})}catch(e){}
+})});
 (function(){
  var els=document.querySelectorAll('.rv');
  if(!('IntersectionObserver' in window)){els.forEach(function(x){x.classList.add('in')});return}

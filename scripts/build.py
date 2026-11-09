@@ -93,6 +93,11 @@ T = {
   "land_k": "Land", "land_h": "Where TerraFunded buyers build",
   "writing_k": "Writing", "writing_h": "Guides I've written for land buyers", "writing_all": "All articles on the TerraFunded blog",
   "press_k": "Press", "press_h": "Press and mentions", "press_type": {"article": "Article", "release": "Press release"},
+  "kit_h": "Press kit", "kit_p": "Bios and photos ready to use in articles, podcasts and event programs.",
+  "kit_short": "Short bio", "kit_long": "Long bio", "kit_copy": "Copy", "kit_copied": "Copied",
+  "kit_photo": "Headshot (JPG)", "kit_logo": "Logo (SVG)", "kit_logo_w": "Logo, white (SVG)",
+  "bio_short": "Rodrigo Blanco is the founder and CEO of TerraFunded, a Dallas-based company that sells rural Texas land directly to buyers with owner financing. TerraFunded has closed more than 350 land transactions and passed $15 million in cumulative sales.",
+  "bio_long": "Rodrigo Blanco is the founder and CEO of TerraFunded, a Dallas-based company that sells rural Texas land directly to buyers with owner financing and a Warranty Deed at closing. Born in Guatemala, he has been developing the seller-financing land model since 2019 and founded TerraFunded in 2020 with his wife and co-founder, Luisa de Blanco. Under his leadership, TerraFunded has closed more than 350 land transactions and passed $15 million in cumulative sales, mostly parcels of about 10 acres across Texas counties such as Lamar, Young, Titus, Cass, Clay and Coryell. About 40% of TerraFunded's buyers are Hispanic or Latino. Rodrigo leads a bilingual team that builds the company's own technology with AI, including TerraFunded GPS, which shows buyers their lot lines through a phone camera. He speaks English and Spanish. More at esrodrigoblanco.com.",
   "faq_k": "FAQ", "faq_h": "Common questions",
   "faq": [
    ("Who is Rodrigo Blanco?", "Rodrigo Blanco (Rodrigo Blanco Marroquín) is the founder and CEO of TerraFunded, a Dallas-based company that sells rural Texas land directly to buyers with owner financing. TerraFunded has closed more than 350 land transactions and passed $15 million in cumulative sales."),
@@ -144,6 +149,11 @@ T = {
   "land_k": "Tierra", "land_h": "Donde construyen los compradores de TerraFunded",
   "writing_k": "Artículos", "writing_h": "Guías que he escrito para compradores de tierra (en inglés)", "writing_all": "Todos los artículos en el blog de TerraFunded",
   "press_k": "Prensa", "press_h": "Prensa y menciones", "press_type": {"article": "Artículo", "release": "Comunicado"},
+  "kit_h": "Kit de prensa", "kit_p": "Bios y fotos listas para usar en artículos, podcasts y programas de eventos.",
+  "kit_short": "Bio corta", "kit_long": "Bio larga", "kit_copy": "Copiar", "kit_copied": "Copiado",
+  "kit_photo": "Foto (JPG)", "kit_logo": "Logo (SVG)", "kit_logo_w": "Logo blanco (SVG)",
+  "bio_short": "Rodrigo Blanco es el fundador y CEO de TerraFunded, una empresa con sede en Dallas que vende tierra rural en Texas directamente a compradores con financiamiento del vendedor. TerraFunded ha cerrado más de 350 transacciones de tierra y superó los $15 millones en ventas acumuladas.",
+  "bio_long": "Rodrigo Blanco es el fundador y CEO de TerraFunded, una empresa con sede en Dallas que vende tierra rural en Texas directamente a compradores con financiamiento del vendedor y Warranty Deed al cierre. Guatemalteco, desarrolla el modelo de venta de tierra con financiamiento del vendedor desde 2019 y fundó TerraFunded en 2020 con su esposa y cofundadora, Luisa de Blanco. Bajo su dirección, TerraFunded ha cerrado más de 350 transacciones de tierra y superó los $15 millones en ventas acumuladas, en su mayoría parcelas de unos 10 acres en condados de Texas como Lamar, Young, Titus, Cass, Clay y Coryell. Cerca del 40% de sus compradores son hispanos o latinos. Rodrigo dirige un equipo bilingüe que desarrolla con inteligencia artificial la tecnología propia de la empresa, como TerraFunded GPS, que le muestra al comprador los linderos de su lote en la cámara del teléfono. Habla español e inglés. Más en esrodrigoblanco.com.",
   "faq_k": "Preguntas", "faq_h": "Preguntas frecuentes",
   "faq": [
    ("¿Quién es Rodrigo Blanco?", "Rodrigo Blanco (Rodrigo Blanco Marroquín) es el fundador y CEO de TerraFunded, una empresa con sede en Dallas que vende tierra rural en Texas directamente a compradores con financiamiento del vendedor. TerraFunded ha cerrado más de 350 transacciones de tierra y superó los $15 millones en ventas acumuladas."),
@@ -177,6 +187,8 @@ def jsonld(t):
         "spouse": {"@type": "Person", "@id": f"{TF}/about-us/luisa-de-blanco#person", "name": "Luisa de Blanco"},
         "knowsAbout": ["Owner financing", "Seller financing", "Rural land in Texas", "Land subdivision", "Warranty deeds", "Real estate notes"],
         "knowsLanguage": ["en", "es"],
+        "nationality": {"@type": "Country", "name": "Guatemala"},
+        "subjectOf": [{"@type": "NewsArticle" if ty == "article" else "Article", "headline": ti, "url": u, "publisher": {"@type": "Organization", "name": out}} for out, d, ti, u, ty in PRESS],
         "sameAs": [TF_PERSON, LINKEDIN, INSTAGRAM],
     }
     graph = [
@@ -184,6 +196,8 @@ def jsonld(t):
         {"@type": "ProfilePage", "@id": f"{page}#profilepage", "url": page, "name": t["title"], "description": t["desc"], "inLanguage": t["lang"],
          "isPartOf": {"@id": f"{SITE}/#website"}, "mainEntity": {"@id": pid}, "dateModified": MODIFIED},
         person,
+        {"@type": "Organization", "@id": f"{TF}/#organization", "name": "TerraFunded", "legalName": "TerraFunded, LLC", "url": TF, "foundingDate": "2020",
+         "founder": [{"@id": pid}, {"@type": "Person", "@id": f"{TF}/about-us/luisa-de-blanco#person", "name": "Luisa de Blanco"}]},
         {"@type": "FAQPage", "@id": f"{page}#faq", "inLanguage": t["lang"], "mainEntity": [
             {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in t["faq"]]},
     ]
@@ -193,6 +207,11 @@ def jsonld(t):
 CSS = (pathlib.Path(__file__).resolve().parent / "site.css").read_text(encoding="utf-8")
 
 JS = """
+document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+ var t=document.getElementById(b.dataset.copy).textContent,l=b.textContent;
+ var done=function(){b.textContent=b.dataset.done;setTimeout(function(){b.textContent=l},1600)};
+ try{navigator.clipboard.writeText(t).then(done,function(){})}catch(e){}
+})});
 (function(){
  var els=document.querySelectorAll('.rv');
  if(!('IntersectionObserver' in window)){els.forEach(function(x){x.classList.add('in')});return}
@@ -248,9 +267,18 @@ def page(code):
 <meta property="og:image" content="{SITE}/og-rodrigo-blanco.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Rodrigo Blanco, {e(t['eyebrow'])}">
 <meta property="og:locale" content="{t['locale']}">
+<meta property="og:locale:alternate" content="{o['locale']}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{e(t['title'])}">
+<meta name="twitter:description" content="{e(t['desc'])}">
+<meta name="twitter:image" content="{SITE}/og-rodrigo-blanco.jpg">
+<meta name="msvalidate.01" content="620472A22B0CA1581D997D4E8FBC1A9F">
+<meta name="google-site-verification" content="-E_RcX_S4mlRN3WIIyLujaK6M_BnNBOgAqA6BPch5Zo">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/urbanist-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>{CSS}</style>
 <script type="application/ld+json">
@@ -313,6 +341,14 @@ def page(code):
 <section class="block" id="press"><div class="wrap">
  <div class="head">{k(5, t['press_k'])}<h2>{e(t['press_h'])}</h2></div>
  <ul class="rows">{press}</ul>
+ <div class="kit" id="press-kit">
+  <div class="kit-head"><h3>{e(t['kit_h'])}</h3><p>{e(t['kit_p'])}</p></div>
+  <div class="bios">
+   <div class="bio"><div class="bio-top"><b>{e(t['kit_short'])}</b><button type="button" data-copy="bs" data-done="{e(t['kit_copied'])}">{e(t['kit_copy'])}</button></div><p id="bs">{e(t['bio_short'])}</p></div>
+   <div class="bio"><div class="bio-top"><b>{e(t['kit_long'])}</b><button type="button" data-copy="bl" data-done="{e(t['kit_copied'])}">{e(t['kit_copy'])}</button></div><p id="bl">{e(t['bio_long'])}</p></div>
+  </div>
+  <div class="dl"><a href="/rodrigo-blanco.jpg" download>{e(t['kit_photo'])} ↓</a><a href="/brand/logo-dark.svg" download>{e(t['kit_logo'])} ↓</a><a href="/brand/logo-white.svg" download>{e(t['kit_logo_w'])} ↓</a></div>
+ </div>
 </div></section>
 
 <section class="block" id="faq"><div class="wrap">
