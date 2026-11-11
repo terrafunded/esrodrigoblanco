@@ -13,6 +13,7 @@ OUT = pathlib.Path(__file__).resolve().parent.parent
 TF = "https://terrafunded.com"
 LINKEDIN = "https://www.linkedin.com/in/rodrigoblancomarroquin/"
 INSTAGRAM = "https://www.instagram.com/esrodrigoblanco/"
+X = "https://x.com/esrodrigoblanco"
 TF_PERSON = f"{TF}/authors/rodrigo-blanco"
 EMAIL = "rodrigo@terrafunded.com"
 PHONE = "(216) 630-4560"
@@ -189,7 +190,7 @@ def jsonld(t):
         "knowsLanguage": ["en", "es"],
         "nationality": {"@type": "Country", "name": "Guatemala"},
         "subjectOf": [{"@type": "NewsArticle" if ty == "article" else "Article", "headline": ti, "url": u, "publisher": {"@type": "Organization", "name": out}} for out, d, ti, u, ty in PRESS],
-        "sameAs": [TF_PERSON, LINKEDIN, INSTAGRAM],
+        "sameAs": [TF_PERSON, LINKEDIN, INSTAGRAM, X],
     }
     graph = [
         {"@type": "WebSite", "@id": f"{SITE}/#website", "url": f"{SITE}/", "name": "Rodrigo Blanco", "alternateName": "Rodrigo BlanCo.", "inLanguage": ["en", "es"], "about": {"@id": pid}},
@@ -253,6 +254,7 @@ def page(code):
 <link rel="alternate" hreflang="x-default" href="{SITE}/">
 <link rel="me" href="{LINKEDIN}">
 <link rel="me" href="{INSTAGRAM}">
+<link rel="me" href="{X}">
 <link rel="me" href="{TF_PERSON}">
 <meta name="author" content="Rodrigo Blanco">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -271,6 +273,8 @@ def page(code):
 <meta property="og:locale" content="{t['locale']}">
 <meta property="og:locale:alternate" content="{o['locale']}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@esrodrigoblanco">
+<meta name="twitter:creator" content="@esrodrigoblanco">
 <meta name="twitter:title" content="{e(t['title'])}">
 <meta name="twitter:description" content="{e(t['desc'])}">
 <meta name="twitter:image" content="{SITE}/og-rodrigo-blanco.jpg">
@@ -363,6 +367,7 @@ def page(code):
   <a href="mailto:{EMAIL}"><span>{e(t['email'])}</span>{EMAIL}</a>
   <a href="{INSTAGRAM}" rel="me noopener"><span>Instagram</span>@esrodrigoblanco ↗</a>
   <a href="{LINKEDIN}" rel="me noopener"><span>LinkedIn</span>Rodrigo Blanco Marroquín ↗</a>
+  <a href="{X}" rel="me noopener"><span>X</span>@esrodrigoblanco ↗</a>
   <div><span>{e(t['office'])}</span>Dallas, TX</div>
  </div>
 </div></div>
@@ -396,7 +401,7 @@ def main():
             "- Track record: 350+ land transactions and $15M+ in cumulative land sales (April 2026, reported by The Title Report)",
             "- About 40% of TerraFunded buyers are Hispanic or Latino",
             "- Portafolio Diversificado (co-founded 2019, residential real estate) is a separate company from TerraFunded, LLC", "",
-            "## Profiles", f"- TerraFunded founder profile: {TF_PERSON}", f"- LinkedIn: {LINKEDIN}", f"- Instagram: {INSTAGRAM}", f"- Spanish version of this site: {SITE}/es/", "",
+            "## Profiles", f"- TerraFunded founder profile: {TF_PERSON}", f"- LinkedIn: {LINKEDIN}", f"- Instagram: {INSTAGRAM}", f"- X: {X}", f"- Spanish version of this site: {SITE}/es/", "",
             "## Writing"] + [f"- [{ti}]({u})" for ti, u, _ in ARTICLES] + ["", "## Press"] + [f"- [{ti}]({u}): {out}, {d['en']}" for out, d, ti, u, _ in PRESS] + [
             "", "## Contact", f"- Text: {PHONE}", f"- Email: {EMAIL}", ""]
     (OUT / "llms.txt").write_text("\n".join(llms), encoding="utf-8")
